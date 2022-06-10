@@ -1,5 +1,3 @@
-import time
-
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import math
@@ -27,7 +25,6 @@ class BasePage:
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
         alert.accept()
-        time.sleep(0.7) # for firefox
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text

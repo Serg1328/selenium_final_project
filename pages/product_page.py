@@ -1,5 +1,3 @@
-import time
-
 from .base_page import BasePage
 from .locators import ProductPageLocators
 
@@ -18,7 +16,6 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.ADDED_TO_BASKET), "product not added"
 
     def should_be_name_product_added_to_basket_as_same_name_product_on_product_page(self):
-        time.sleep(0.7) # for firefox
         name_product = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT).text
         name_product_message = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT_MESSAGE).text
         assert name_product == name_product_message, f"product name is different name_product = {name_product}, name_product_message={name_product_message}"
