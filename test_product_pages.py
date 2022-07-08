@@ -16,7 +16,7 @@ base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207?p
 #                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
 #                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
 @pytest.mark.parametrize('number_offer', [pytest.param(n, marks=pytest.mark.xfail(n == 7,
-                                                                                  reason="product name is different {name_product} != {name_product_message}"))
+        reason="product name is different {name_product} != {name_product_message}"))
                                           for n in range(10)])
 def test_guest_can_add_product_to_basket(browser, number_offer):
     # url = number_offer
@@ -30,6 +30,7 @@ def test_guest_can_add_product_to_basket(browser, number_offer):
     page.should_be_cart_price_message()
     page.should_be_cart_prise_as_same_price_product()
 
+
 @pytest.mark.xfail(reason="")
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, url_neg, 0)
@@ -42,6 +43,7 @@ def test_guest_cant_see_success_message(browser):
     page = ProductPage(browser, url_neg, 0)
     page.open()
     page.should_not_be_success_message()
+
 
 @pytest.mark.xfail(reason="")
 def test_message_disappeared_after_adding_product_to_basket(browser):
