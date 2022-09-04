@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def pytest_addoption(parser):
@@ -21,7 +22,7 @@ def browser(request):
         print("\nstart chrome browser for test..")
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        browser = webdriver.Chrome(options=options)
+        browser = webdriver.Chrome(executable_path=ChromeDriverManager().install())
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         fp = webdriver.FirefoxProfile()
